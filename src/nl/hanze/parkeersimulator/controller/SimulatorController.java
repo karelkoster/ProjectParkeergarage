@@ -37,7 +37,7 @@ public class SimulatorController {
 
 	public SimulatorController(SimulatorView simulatorView) {
 		this.simulatorView = simulatorView;
-		
+
 		entranceCarQueue = new CarQueue();
 		entrancePassQueue = new CarQueue();
 		paymentCarQueue = new CarQueue();
@@ -108,7 +108,8 @@ public class SimulatorController {
 	private void carsEntering(CarQueue queue) {
 		int i = 0;
 		// Remove car from the front of the queue and assign to a parking space.
-		while (queue.carsInQueue() > 0 && simulatorView.getNumberOfOpenSpots() > 0 && i < enterSpeed) {
+		while (queue.carsInQueue() > 0 && simulatorView.getSimulatorModel().getNumberOfOpenSpots() > 0
+				&& i < enterSpeed) {
 			Car car = queue.removeCar();
 			Location freeLocation = simulatorView.getFirstFreeLocation();
 			simulatorView.setCarAt(freeLocation, car);

@@ -10,7 +10,7 @@ import nl.hanze.parkeersimulator.model.Model;
 
 /**
  * 
- *
+ *  TODO nog gebruiken
  */
 public abstract class View extends JPanel {
 

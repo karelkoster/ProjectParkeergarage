@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import nl.hanze.parkeersimulator.controller.SimulatorController;
+import nl.hanze.parkeersimulator.model.SimulatorModel;
 import nl.hanze.parkeersimulator.view.SimulatorView;
 
 public class Main extends JFrame {
@@ -22,7 +23,8 @@ public class Main extends JFrame {
 		
 		// Model/Controller/View
 		// TODO Models
-		SimulatorView simulatorView = new SimulatorView(3, 6, 30);
+		SimulatorModel simulatorModel = new SimulatorModel(3, 6, 30);
+		SimulatorView simulatorView = new SimulatorView(simulatorModel);
 		SimulatorController simulatorController = new SimulatorController(simulatorView);
 		simulatorController.run();
 		
