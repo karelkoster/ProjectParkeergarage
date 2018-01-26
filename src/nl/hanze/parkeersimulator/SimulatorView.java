@@ -7,7 +7,7 @@ import nl.hanze.parkeersimulator.model.Car;
 import java.awt.*;
 
 public class SimulatorView extends JFrame {
-    private CarParkView carParkView;
+    private CarParkViewInner carParkViewInner;
     private int numberOfFloors;
     private int numberOfRows;
     private int numberOfPlaces;
@@ -21,10 +21,10 @@ public class SimulatorView extends JFrame {
         this.numberOfOpenSpots =numberOfFloors*numberOfRows*numberOfPlaces;
         cars = new Car[numberOfFloors][numberOfRows][numberOfPlaces];
         
-        carParkView = new CarParkView();
+        carParkViewInner = new CarParkViewInner();
 
         Container contentPane = getContentPane();
-        contentPane.add(carParkView, BorderLayout.CENTER);
+        contentPane.add(carParkViewInner, BorderLayout.CENTER);
         pack();
         setVisible(true);
 
@@ -32,7 +32,7 @@ public class SimulatorView extends JFrame {
     }
 
     public void updateView() {
-        carParkView.updateView();
+        carParkViewInner.updateView();
     }
     
 	public int getNumberOfFloors() {
@@ -139,7 +139,7 @@ public class SimulatorView extends JFrame {
         return true;
     }
     
-    private class CarParkView extends JPanel {
+    private class CarParkViewInner extends JPanel {
         
         private Dimension size;
         private Image carParkImage;    
@@ -147,7 +147,7 @@ public class SimulatorView extends JFrame {
         /**
          * Constructor for objects of class CarPark
          */
-        public CarParkView() {
+        public CarParkViewInner() {
             size = new Dimension(0, 0);
         }
     
