@@ -1,58 +1,56 @@
 package nl.hanze.parkeersimulator.model;
 
-import java.awt.*;
-
-import nl.hanze.parkeersimulator.Location;
+import java.awt.Color;
 
 public abstract class Car {
 
-    private Location location;
-    private int minutesLeft;
-    private boolean isPaying;
-    private boolean hasToPay;
+	private Location location;
+	private int minutesLeft;
+	private boolean isPaying;
+	private boolean hasToPay;
 
-    /**
-     * Constructor for objects of class Car
-     */
-    public Car() {
+	/**
+	 * Constructor for objects of class Car
+	 */
+	public Car() {
 
-    }
+	}
 
-    public Location getLocation() {
-        return location;
-    }
+	public Location getLocation() {
+		return location;
+	}
 
-    public void setLocation(Location location) {
-        this.location = location;
-    }
+	public void setLocation(Location location) {
+		this.location = location;
+	}
 
-    public int getMinutesLeft() {
-        return minutesLeft;
-    }
+	public int getMinutesLeft() {
+		return minutesLeft;
+	}
 
-    public void setMinutesLeft(int minutesLeft) {
-        this.minutesLeft = minutesLeft;
-    }
-    
-    public boolean getIsPaying() {
-        return isPaying;
-    }
+	public void setMinutesLeft(int minutesLeft) {
+		this.minutesLeft = minutesLeft;
+	}
 
-    public void setIsPaying(boolean isPaying) {
-        this.isPaying = isPaying;
-    }
+	public boolean getIsPaying() {
+		return isPaying;
+	}
 
-    public boolean getHasToPay() {
-        return hasToPay;
-    }
+	public void setIsPaying(boolean isPaying) {
+		this.isPaying = isPaying;
+	}
 
-    public void setHasToPay(boolean hasToPay) {
-        this.hasToPay = hasToPay;
-    }
+	public boolean getHasToPay() {
+		return hasToPay;
+	}
 
-    public void tick() {
-        minutesLeft--;
-    }
-    
-    public abstract Color getColor();
+	public void setHasToPay(boolean hasToPay) {
+		this.hasToPay = hasToPay;
+	}
+
+	public void tick() {
+		minutesLeft--;
+	}
+
+	public abstract Color getColor();
 }

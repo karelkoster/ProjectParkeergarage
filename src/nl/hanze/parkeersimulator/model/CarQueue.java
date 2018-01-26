@@ -1,8 +1,6 @@
-package nl.hanze.parkeersimulator;
+package nl.hanze.parkeersimulator.model;
 import java.util.LinkedList;
 import java.util.Queue;
-
-import nl.hanze.parkeersimulator.model.Car;
 
 public class CarQueue {
     private Queue<Car> queue = new LinkedList<>();

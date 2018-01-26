@@ -5,10 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import nl.hanze.parkeersimulator.controller.CarparkController;
-import nl.hanze.parkeersimulator.controller.Controller;
-import nl.hanze.parkeersimulator.view.CarparkView;
-import nl.hanze.parkeersimulator.view.View;
+import nl.hanze.parkeersimulator.controller.SimulatorController;
+import nl.hanze.parkeersimulator.view.SimulatorView;
 
 public class Main extends JFrame {
 
@@ -26,11 +24,14 @@ public class Main extends JFrame {
 
 		// Model/Controller/View
 
-		Controller carparkController = new CarparkController();
-		View carparkView = new CarparkView(carparkController);
-
-		rootPanel.add(carparkView);
+		SimulatorView simulatorView = new SimulatorView(3, 6, 30);
+		SimulatorController simulatorController = new SimulatorController(simulatorView);
+		simulatorController.run();
 		
+//		View carparkView = new CarparkView(carparkController);
+//
+//		rootPanel.add(carparkView);
+//		
 		//		StoplichtModel model=new StoplichtModel();
 //		Controller controller=new StoplichtController(model);
 //		View view=new StoplichtView(controller);

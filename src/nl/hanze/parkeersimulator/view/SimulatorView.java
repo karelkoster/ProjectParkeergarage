@@ -1,13 +1,18 @@
-package nl.hanze.parkeersimulator;
+package nl.hanze.parkeersimulator.view;
 
 import javax.swing.*;
 
 import nl.hanze.parkeersimulator.model.Car;
+import nl.hanze.parkeersimulator.model.Location;
 
 import java.awt.*;
 
 public class SimulatorView extends JFrame {
-    private CarParkViewInner carParkViewInner;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1728200002303044273L;
+	private CarParkViewInner carParkViewInner;
     private int numberOfFloors;
     private int numberOfRows;
     private int numberOfPlaces;
@@ -141,7 +146,11 @@ public class SimulatorView extends JFrame {
     
     private class CarParkViewInner extends JPanel {
         
-        private Dimension size;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 340979964327648584L;
+		private Dimension size;
         private Image carParkImage;    
     
         /**
