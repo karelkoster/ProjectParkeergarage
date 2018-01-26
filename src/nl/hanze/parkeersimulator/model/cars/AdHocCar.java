@@ -1,4 +1,4 @@
-package nl.hanze.parkeersimulator.model;
+package nl.hanze.parkeersimulator.model.cars;
 
 import java.awt.Color;
 import java.util.Random;

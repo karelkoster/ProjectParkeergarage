@@ -2,11 +2,11 @@ package nl.hanze.parkeersimulator.controller;
 
 import java.util.Random;
 
-import nl.hanze.parkeersimulator.model.AdHocCar;
-import nl.hanze.parkeersimulator.model.Car;
 import nl.hanze.parkeersimulator.model.CarQueue;
 import nl.hanze.parkeersimulator.model.Location;
-import nl.hanze.parkeersimulator.model.ParkingPassCar;
+import nl.hanze.parkeersimulator.model.cars.AdHocCar;
+import nl.hanze.parkeersimulator.model.cars.Car;
+import nl.hanze.parkeersimulator.model.cars.ParkingPassCar;
 import nl.hanze.parkeersimulator.view.SimulatorView;
 
 public class SimulatorController {
@@ -42,7 +42,6 @@ public class SimulatorController {
 		entrancePassQueue = new CarQueue();
 		paymentCarQueue = new CarQueue();
 		exitCarQueue = new CarQueue();
-//		simulatorView = new SimulatorView(3, 6, 30);
 	}
 
 	public void run() {

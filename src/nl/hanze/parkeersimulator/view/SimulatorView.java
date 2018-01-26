@@ -2,8 +2,8 @@ package nl.hanze.parkeersimulator.view;
 
 import javax.swing.*;
 
-import nl.hanze.parkeersimulator.model.Car;
 import nl.hanze.parkeersimulator.model.Location;
+import nl.hanze.parkeersimulator.model.cars.Car;
 
 import java.awt.*;
 
@@ -168,7 +168,7 @@ public class SimulatorView extends JFrame {
         }
     
         /**
-         * Overriden. The car park view component needs to be redisplayed. Copy the
+         * Overridden. The car park view component needs to be redisplayed. Copy the
          * internal image to screen.
          */
         public void paintComponent(Graphics g) {
@@ -181,7 +181,7 @@ public class SimulatorView extends JFrame {
                 g.drawImage(carParkImage, 0, 0, null);
             }
             else {
-                // Rescale the previous image.
+                // Resize the previous image.
                 g.drawImage(carParkImage, 0, 0, currentSize.width, currentSize.height, null);
             }
         }

@@ -14,43 +14,21 @@ public class Main extends JFrame {
 
 	public Main() {
 		setTitle("Parkeergaragesimulator");
-		setSize(640,400);
+//		setSize(640,400);
 		JPanel rootPanel = new JPanel();
 		
-		JLabel header = new JLabel("Parkeergaragesimulator", SwingConstants.CENTER);
-		rootPanel.add(header);
+//		JLabel header = new JLabel("Parkeerplekken", SwingConstants.CENTER);
+//		rootPanel.add(header);
 		
-//		root.setLayout(new GridBagLayout());
-
 		// Model/Controller/View
-
+		// TODO Models
 		SimulatorView simulatorView = new SimulatorView(3, 6, 30);
 		SimulatorController simulatorController = new SimulatorController(simulatorView);
 		simulatorController.run();
 		
-//		View carparkView = new CarparkView(carparkController);
-//
-//		rootPanel.add(carparkView);
-//		
-		//		StoplichtModel model=new StoplichtModel();
-//		Controller controller=new StoplichtController(model);
-//		View view=new StoplichtView(controller);
-//		View view2=new StoplichtViewTekst();
-//
-//		GridBagConstraints c = new GridBagConstraints();
-
-//		root.add(view,c);
-//		c.gridx=0;
-//		c.gridy=1;
-//		root.add(view2,c);
 		add(rootPanel);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
-
-//		model.registerView(view);
-//		model.registerView(view2);
-//		model.updateViews();
-
 	}
 	
 	public static void main(String[] args) {
