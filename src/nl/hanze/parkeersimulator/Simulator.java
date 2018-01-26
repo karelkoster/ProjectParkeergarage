@@ -2,6 +2,10 @@ package nl.hanze.parkeersimulator;
 
 import java.util.Random;
 
+import nl.hanze.parkeersimulator.model.AdHocCar;
+import nl.hanze.parkeersimulator.model.Car;
+import nl.hanze.parkeersimulator.model.ParkingPassCar;
+
 public class Simulator {
 
 	private static final String AD_HOC = "1";

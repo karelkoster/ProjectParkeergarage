@@ -1,6 +1,8 @@
-package nl.hanze.parkeersimulator;
+package nl.hanze.parkeersimulator.model;
 
 import java.awt.*;
+
+import nl.hanze.parkeersimulator.Location;
 
 public abstract class Car {
 

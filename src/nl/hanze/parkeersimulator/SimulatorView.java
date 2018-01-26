@@ -1,6 +1,9 @@
 package nl.hanze.parkeersimulator;
 
 import javax.swing.*;
+
+import nl.hanze.parkeersimulator.model.Car;
+
 import java.awt.*;
 
 public class SimulatorView extends JFrame {
