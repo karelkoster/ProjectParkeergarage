@@ -1,4 +1,4 @@
-package Parkeersimulator;
+package nl.hanze.parkeersimulator;
 import java.util.LinkedList;
 import java.util.Queue;
 

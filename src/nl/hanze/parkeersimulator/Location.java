@@ -1,4 +1,4 @@
-package Parkeersimulator;
+package nl.hanze.parkeersimulator;
 
 public class Location {
 

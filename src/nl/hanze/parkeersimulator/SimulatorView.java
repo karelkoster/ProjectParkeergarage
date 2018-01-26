@@ -1,4 +1,4 @@
-package Parkeersimulator;
+package nl.hanze.parkeersimulator;
 
 import javax.swing.*;
 import java.awt.*;
