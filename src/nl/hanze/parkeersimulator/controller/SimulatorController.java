@@ -4,6 +4,7 @@ import java.util.Random;
 
 import nl.hanze.parkeersimulator.model.CarQueue;
 import nl.hanze.parkeersimulator.model.Location;
+import nl.hanze.parkeersimulator.model.TimeModel;
 import nl.hanze.parkeersimulator.model.cars.AdHocCar;
 import nl.hanze.parkeersimulator.model.cars.Car;
 import nl.hanze.parkeersimulator.model.cars.ParkingPassCar;
@@ -20,13 +21,10 @@ public class SimulatorController {
 	private CarQueue entrancePassQueue;
 	private CarQueue paymentCarQueue;
 	private CarQueue exitCarQueue;
+	
+	private TimeModel timeModel;
 
 	private int tickPause = 100;
-
-	// TODO Verplaatsen naar een TimeModel
-	private int day = 0;
-	private int hour = 0;
-	private int minute = 0;
 
 	// TODO Verplaatsen naar een Model?
 	int weekDayArrivals = 100; // average number of arriving cars per hour
@@ -42,10 +40,12 @@ public class SimulatorController {
 	public SimulatorController(SimulatorView simulatorView) {
 		this.simulatorView = simulatorView;
 
-		entranceCarQueue = new CarQueue();
-		entrancePassQueue = new CarQueue();
-		paymentCarQueue = new CarQueue();
-		exitCarQueue = new CarQueue();
+		this.entranceCarQueue = new CarQueue();
+		this.entrancePassQueue = new CarQueue();
+		this.paymentCarQueue = new CarQueue();
+		this.exitCarQueue = new CarQueue();
+		
+		this.timeModel = new TimeModel();
 	}
 
 	public void run() {
@@ -55,7 +55,7 @@ public class SimulatorController {
 	}
 
 	private void tick() {
-		advanceTime();
+		this.timeModel.advanceTimeByOneMinute();
 		handleExit();
 		updateViews();
 		// Pause.
@@ -65,24 +65,6 @@ public class SimulatorController {
 			e.printStackTrace();
 		}
 		handleEntrance();
-	}
-
-	// TODO Verplaatsen naar een TimeModel: advanceTimeByOneMinute
-	private void advanceTime() {
-		// Advance the time by one minute.
-		minute++;
-		while (minute > 59) {
-			minute -= 60;
-			hour++;
-		}
-		while (hour > 23) {
-			hour -= 24;
-			day++;
-		}
-		while (day > 6) {
-			day -= 7;
-		}
-
 	}
 
 	private void handleEntrance() {
@@ -160,7 +142,7 @@ public class SimulatorController {
 		Random random = new Random();
 
 		// Get the average number of cars that arrive per hour.
-		int averageNumberOfCarsPerHour = day < 5 ? weekDay : weekend;
+		int averageNumberOfCarsPerHour = this.timeModel.getDay() < 5 ? weekDay : weekend;
 
 		// Calculate the number of cars that arrive this minute.
 		double standardDeviation = averageNumberOfCarsPerHour * 0.3;
