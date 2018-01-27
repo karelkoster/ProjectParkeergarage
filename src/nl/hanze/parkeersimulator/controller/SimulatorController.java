@@ -95,7 +95,7 @@ public class SimulatorController {
 	private void carsEntering(CarQueue queue) {
 		int i = 0;
 		// Remove car from the front of the queue and assign to a parking space.
-		while (queue.carsInQueue() > 0 && simulatorView.getSimulatorModel().getNumberOfOpenSpots() > 0
+		while (queue.carsInQueue() > 0 && simulatorView.getCarParkModel().getNumberOfOpenSpots() > 0
 				&& i < enterSpeed) {
 			Car car = queue.removeCar();
 			Location freeLocation = simulatorView.getFirstFreeLocation();
