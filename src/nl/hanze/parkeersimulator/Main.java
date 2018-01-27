@@ -1,12 +1,10 @@
 package nl.hanze.parkeersimulator;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import nl.hanze.parkeersimulator.controller.SimulatorController;
-import nl.hanze.parkeersimulator.model.SimulatorModel;
+import nl.hanze.parkeersimulator.model.CarParkModel;
 import nl.hanze.parkeersimulator.view.SimulatorView;
 
 public class Main extends JFrame {
@@ -15,27 +13,26 @@ public class Main extends JFrame {
 
 	public Main() {
 		setTitle("Parkeergaragesimulator");
-//		setSize(640,400);
+		// setSize(640,400);
 		JPanel rootPanel = new JPanel();
-		
-//		JLabel header = new JLabel("Parkeerplekken", SwingConstants.CENTER);
-//		rootPanel.add(header);
-		
+
+		// JLabel header = new JLabel("Parkeerplekken", SwingConstants.CENTER);
+		// rootPanel.add(header);
+
 		// Model/Controller/View
-		// TODO Models
-		SimulatorModel simulatorModel = new SimulatorModel(3, 6, 30);
+		CarParkModel simulatorModel = new CarParkModel(3, 6, 30);
 		SimulatorView simulatorView = new SimulatorView(simulatorModel);
 		SimulatorController simulatorController = new SimulatorController(simulatorView);
 		simulatorController.run();
-		
+
 		add(rootPanel);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-	
+
 	public static void main(String[] args) {
 		new Main();
-		
+
 	}
 
 }

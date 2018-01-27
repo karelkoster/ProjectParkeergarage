@@ -14,23 +14,27 @@ public class SimulatorController {
 	private static final String AD_HOC = "1";
 	private static final String PASS = "2";
 
+	private SimulatorView simulatorView;
+
 	private CarQueue entranceCarQueue;
 	private CarQueue entrancePassQueue;
 	private CarQueue paymentCarQueue;
 	private CarQueue exitCarQueue;
-	private SimulatorView simulatorView;
 
+	private int tickPause = 100;
+
+	// TODO Verplaatsen naar een TimeModel
 	private int day = 0;
 	private int hour = 0;
 	private int minute = 0;
 
-	private int tickPause = 100;
-
+	// TODO Verplaatsen naar een Model?
 	int weekDayArrivals = 100; // average number of arriving cars per hour
 	int weekendArrivals = 200; // average number of arriving cars per hour
 	int weekDayPassArrivals = 50; // average number of arriving cars per hour
 	int weekendPassArrivals = 5; // average number of arriving cars per hour
 
+	// TODO Verplaatsen naar een Model?
 	int enterSpeed = 3; // number of cars that can enter per minute
 	int paymentSpeed = 7; // number of cars that can pay per minute
 	int exitSpeed = 5; // number of cars that can leave per minute
@@ -63,6 +67,7 @@ public class SimulatorController {
 		handleEntrance();
 	}
 
+	// TODO Verplaatsen naar een TimeModel: advanceTimeByOneMinute
 	private void advanceTime() {
 		// Advance the time by one minute.
 		minute++;

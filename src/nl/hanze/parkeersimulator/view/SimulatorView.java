@@ -3,7 +3,7 @@ package nl.hanze.parkeersimulator.view;
 import javax.swing.*;
 
 import nl.hanze.parkeersimulator.model.Location;
-import nl.hanze.parkeersimulator.model.SimulatorModel;
+import nl.hanze.parkeersimulator.model.CarParkModel;
 import nl.hanze.parkeersimulator.model.cars.Car;
 
 import java.awt.*;
@@ -13,22 +13,14 @@ public class SimulatorView extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = -1728200002303044273L;
-	private SimulatorModel simulatorModel;
+	private CarParkModel simulatorModel;
 	private CarParkView carParkView;
-	// private int numberOfFloors;
-	// private int numberOfRows;
-	// private int numberOfPlaces;
-	// private int numberOfOpenSpots;
 	private Car[][][] cars;
 
-	public SimulatorView(SimulatorModel simulatorModel) {
+	public SimulatorView(CarParkModel simulatorModel) {
 		this.simulatorModel = simulatorModel;
-		// this.numberOfFloors = numberOfFloors;
-		// this.numberOfRows = numberOfRows;
-		// this.numberOfPlaces = numberOfPlaces;
-		// this.numberOfOpenSpots =numberOfFloors*numberOfRows*numberOfPlaces;
-		
-		// TODO cars ook verplaatsen naar simulatorModel
+
+		// TODO cars verplaatsen naar simulatorModel
 		cars = new Car[this.simulatorModel.getNumberOfFloors()][this.simulatorModel
 				.getNumberOfRows()][this.simulatorModel.getNumberOfPlaces()];
 
@@ -47,7 +39,7 @@ public class SimulatorView extends JFrame {
 	}
 
 	// TODO tijdelijke manier om bij aantal open spots te komen
-	public SimulatorModel getSimulatorModel() {
+	public CarParkModel getSimulatorModel() {
 		return simulatorModel;
 	}
 
@@ -66,9 +58,7 @@ public class SimulatorView extends JFrame {
 		if (oldCar == null) {
 			cars[location.getFloor()][location.getRow()][location.getPlace()] = car;
 			car.setLocation(location);
-			// TODO mooiere methode voor maken?
 			this.simulatorModel.setNumberOfOpenSpots(this.simulatorModel.getNumberOfOpenSpots() - 1);
-			// numberOfOpenSpots--;
 			return true;
 		}
 		return false;
@@ -84,9 +74,7 @@ public class SimulatorView extends JFrame {
 		}
 		cars[location.getFloor()][location.getRow()][location.getPlace()] = null;
 		car.setLocation(null);
-		// TODO mooiere methode voor maken?
 		this.simulatorModel.setNumberOfOpenSpots(this.simulatorModel.getNumberOfOpenSpots() + 1);
-		// numberOfOpenSpots++;
 		return car;
 	}
 
@@ -145,7 +133,6 @@ public class SimulatorView extends JFrame {
 		return true;
 	}
 
-	// TODO Eigen class van maken
 	private class CarParkView extends JPanel {
 
 		/**
@@ -154,12 +141,12 @@ public class SimulatorView extends JFrame {
 		private static final long serialVersionUID = 340979964327648584L;
 		private Dimension size;
 		private Image carParkImage;
-		private SimulatorModel simulatorModel;
+		private CarParkModel simulatorModel;
 
 		/**
 		 * Constructor for objects of class CarPark
 		 */
-		public CarParkView(SimulatorModel simulatorModel) {
+		public CarParkView(CarParkModel simulatorModel) {
 			this.simulatorModel = simulatorModel;
 			size = new Dimension(0, 0);
 		}

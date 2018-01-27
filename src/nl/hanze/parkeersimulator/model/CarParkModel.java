@@ -1,6 +1,6 @@
 package nl.hanze.parkeersimulator.model;
 
-public class SimulatorModel {
+public class CarParkModel {
 
 	private int numberOfFloors;
 	private int numberOfRows;
@@ -12,7 +12,7 @@ public class SimulatorModel {
 	 * @param numberOfRows
 	 * @param numberOfPlaces
 	 */
-	public SimulatorModel(int numberOfFloors, int numberOfRows, int numberOfPlaces) {
+	public CarParkModel(int numberOfFloors, int numberOfRows, int numberOfPlaces) {
 		this.numberOfFloors = numberOfFloors;
 		this.numberOfRows = numberOfRows;
 		this.numberOfPlaces = numberOfPlaces;
@@ -50,5 +50,5 @@ public class SimulatorModel {
 	public void setNumberOfOpenSpots(int numberOfOpenSpots) {
 		this.numberOfOpenSpots = numberOfOpenSpots;
 	}
-	
+
 }
