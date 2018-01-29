@@ -3,8 +3,8 @@ package nl.hanze.parkeersimulator;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import nl.hanze.parkeersimulator.controller.SimulatorController;
 import nl.hanze.parkeersimulator.model.CarParkModel;
+import nl.hanze.parkeersimulator.model.SimulatorModel;
 import nl.hanze.parkeersimulator.view.SimulatorView;
 
 public class Main extends JFrame {
@@ -20,10 +20,10 @@ public class Main extends JFrame {
 		// rootPanel.add(header);
 
 		// Model/Controller/View
-		CarParkModel simulatorModel = new CarParkModel(3, 6, 30);
-		SimulatorView simulatorView = new SimulatorView(simulatorModel);
-		SimulatorController simulatorController = new SimulatorController(simulatorView);
-		simulatorController.run();
+		CarParkModel carParkModel = new CarParkModel(3, 6, 30);
+		SimulatorView simulatorView = new SimulatorView(carParkModel);
+		SimulatorModel simulatorModel = new SimulatorModel(simulatorView);
+		simulatorModel.run();
 
 		add(rootPanel);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
