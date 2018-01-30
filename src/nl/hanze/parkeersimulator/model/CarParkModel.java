@@ -88,9 +88,6 @@ public class CarParkModel {
 			cars[location.getFloor()][location.getRow()][location.getPlace()] = car;
 			car.setLocation(location);
 			setNumberOfOpenSpots(getNumberOfOpenSpots() - 1);
-			//------------------ Door Ries Toegevoegd--------------------------------------------
-			model.setAantal(model.getAantal()+1); 
-			//------------------------------------------------------------------------------------
 			return true;
 		}
 		return false;

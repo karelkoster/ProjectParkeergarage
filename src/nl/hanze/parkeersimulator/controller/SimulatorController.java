@@ -1,9 +1,11 @@
 package nl.hanze.parkeersimulator.controller;
 
+import java.awt.Color;
 import java.util.Random;
 
 import nl.hanze.parkeersimulator.model.CarQueue;
 import nl.hanze.parkeersimulator.model.Location;
+import nl.hanze.parkeersimulator.model.Model;
 import nl.hanze.parkeersimulator.model.TimeModel;
 import nl.hanze.parkeersimulator.model.cars.AdHocCar;
 import nl.hanze.parkeersimulator.model.cars.Car;
@@ -21,7 +23,8 @@ public class SimulatorController {
 	private CarQueue entrancePassQueue;
 	private CarQueue paymentCarQueue;
 	private CarQueue exitCarQueue;
-
+	private Model model;
+	
 	private TimeModel timeModel;
 
 	private int tickPause = 100;
@@ -153,19 +156,31 @@ public class SimulatorController {
 		case AD_HOC:
 			for (int i = 0; i < numberOfCars; i++) {
 				entranceCarQueue.addCar(new AdHocCar());
+				model.setAantalRed(model.getAantalRed()+1);
 			}
 			break;
 		case PASS:
 			for (int i = 0; i < numberOfCars; i++) {
 				entrancePassQueue.addCar(new ParkingPassCar());
+				model.setAantalBlue(model.getAantalBlue()+1);
 			}
 			break;
 		}
 	}
-
-	private void carLeavesSpot(Car car) {
-		simulatorView.getCarPark().removeCarAt(car.getLocation());
-		exitCarQueue.addCar(car);
+	
+	public void SetModel(Model model) { 
+		this.model=model; 
 	}
-
-}
+	
+	private void carLeavesSpot(Car car) {
+		Color COLORRED = Color.red; 
+		simulatorView.getCarPark().removeCarAt(car.getLocation());
+		if (car.getColor() == COLORRED) {
+		model.setAantalRed(model.getAantalRed()-1);
+		} 
+		else { 
+			model.setAantalBlue(model.getAantalBlue()-1);
+		}  
+		exitCarQueue.addCar(car);
+	} 
+} 

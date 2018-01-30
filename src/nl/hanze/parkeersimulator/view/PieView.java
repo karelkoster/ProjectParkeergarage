@@ -13,10 +13,17 @@ public class PieView extends AbstractView {
 	}
 
 	public void paintComponent(Graphics g) {
-		int aantal=getModel().getAantal();
+		int aantalRed=getModel().getAantalRed();
+		int aantalBlue=getModel().getAantalBluePie();
+		
 		g.setColor(Color.WHITE);
-		g.fillRect(0, 0, 200, 200);
+		g.fillRect(0, 0, 540, 540);
 		g.setColor(Color.BLUE);
-		g.fillArc(10, 10, 180, 180, 0, aantal);
+		g.fillArc(10, 10, 180, 180, 0, berekenPie(aantalBlue));
+		g.setColor(Color.RED);
+		g.fillArc(10, 10, 180, 180, 0, berekenPie(aantalRed));
 	}	
+	private int berekenPie(int aantal) { 
+		return (int)(aantal/1.5); 
+	}
 }

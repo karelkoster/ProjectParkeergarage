@@ -1,4 +1,9 @@
-package nl.hanze.parkeersimulator.controller;
+/*
+ * Deze classe is niet ingebruik
+ * 
+ * 
+ * 
+ * package nl.hanze.parkeersimulator.controller;
 
 import javax.swing.*;
 
@@ -38,9 +43,7 @@ public class Controller extends AbstractController implements ActionListener {
 
 		setVisible(true);
 	}
-	public void ModelPlus() { 
-		model.setAantal(model.getAantal()+1); 
-	}
+	
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==mineen) {
@@ -60,3 +63,4 @@ public class Controller extends AbstractController implements ActionListener {
 		}
 	}
 }
+**/
