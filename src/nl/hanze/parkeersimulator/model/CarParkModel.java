@@ -1,6 +1,7 @@
 package nl.hanze.parkeersimulator.model;
 
 import nl.hanze.parkeersimulator.model.cars.Car;
+import nl.hanze.parkeersimulator.model.Model;
 
 public class CarParkModel {
 
@@ -9,6 +10,7 @@ public class CarParkModel {
 	private int numberOfPlaces;
 	private int numberOfOpenSpots;
 	private Car[][][] cars;
+	private Model model;
 
 	/**
 	 * @param numberOfFloors
@@ -71,6 +73,11 @@ public class CarParkModel {
 		Car car = cars[location.getFloor()][location.getRow()][location.getPlace()];
 		return car;
 	}
+	//Methode Door Ries Toegevoegd 
+	//Slaat de model Waarde op
+	public void SetModel(Model model) { 
+		this.model=model; 
+	}
 
 	public boolean setCarAt(Location location, Car car) {
 		if (!locationIsValid(location)) {
@@ -81,6 +88,9 @@ public class CarParkModel {
 			cars[location.getFloor()][location.getRow()][location.getPlace()] = car;
 			car.setLocation(location);
 			setNumberOfOpenSpots(getNumberOfOpenSpots() - 1);
+			//------------------ Door Ries Toegevoegd--------------------------------------------
+			model.setAantal(model.getAantal()+1); 
+			//------------------------------------------------------------------------------------
 			return true;
 		}
 		return false;
@@ -97,6 +107,9 @@ public class CarParkModel {
 		cars[location.getFloor()][location.getRow()][location.getPlace()] = null;
 		car.setLocation(null);
 		setNumberOfOpenSpots(getNumberOfOpenSpots() + 1);
+		//------------------ Door Ries Toegevoegd--------------------------------------------
+		model.setAantal(model.getAantal()-1); 
+		//------------------------------------------------------------------------------------
 		return car;
 	}
 

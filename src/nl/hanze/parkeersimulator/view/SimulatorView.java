@@ -80,7 +80,8 @@ public class SimulatorView extends JFrame {
 		}
 	}
 
-	private class CarParkView extends JPanel {
+
+private class CarParkView extends JPanel {
 
 		/**
 		 * 
