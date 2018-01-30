@@ -1,18 +1,14 @@
-package nl.hanze.parkeersimulator.controller;
+package nl.hanze.parkeersimulator.model;
 
 import java.awt.Color;
 import java.util.Random;
 
-import nl.hanze.parkeersimulator.model.CarQueue;
-import nl.hanze.parkeersimulator.model.Location;
-import nl.hanze.parkeersimulator.model.Model;
-import nl.hanze.parkeersimulator.model.TimeModel;
 import nl.hanze.parkeersimulator.model.cars.AdHocCar;
 import nl.hanze.parkeersimulator.model.cars.Car;
 import nl.hanze.parkeersimulator.model.cars.ParkingPassCar;
 import nl.hanze.parkeersimulator.view.SimulatorView;
 
-public class SimulatorController {
+public class SimulatorModel {
 
 	private static final String AD_HOC = "1";
 	private static final String PASS = "2";
@@ -38,7 +34,7 @@ public class SimulatorController {
 	int paymentSpeed = 7; // number of cars that can pay per minute
 	int exitSpeed = 5; // number of cars that can leave per minute
 
-	public SimulatorController(SimulatorView simulatorView) {
+	public SimulatorModel(SimulatorView simulatorView) {
 		this.simulatorView = simulatorView;
 
 		this.entranceCarQueue = new CarQueue();

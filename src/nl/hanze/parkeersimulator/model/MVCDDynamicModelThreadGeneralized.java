@@ -1,6 +1,5 @@
 package nl.hanze.parkeersimulator.model;
 
-import nl.hanze.parkeersimulator.controller.SimulatorController;
 import nl.hanze.parkeersimulator.view.AbstractView;
 import nl.hanze.parkeersimulator.view.PieView;
 import nl.hanze.parkeersimulator.view.SimulatorView;
@@ -25,7 +24,7 @@ public class MVCDDynamicModelThreadGeneralized extends JFrame {
 		CarParkModel simulatorModel = new CarParkModel(3, 6, 30);
 		
 		SimulatorView simulatorView = new SimulatorView(simulatorModel);
-		SimulatorController simulatorController = new SimulatorController(simulatorView);
+		SimulatorModel simulatorController = new SimulatorModel(simulatorView);
 		
 		model=new Model();
 		pieview=new PieView(model);

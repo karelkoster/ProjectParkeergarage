@@ -1,5 +1,5 @@
 /*
- * Deze classe is niet ingebruik
+ * Deze klasse is niet ingebruik
  * 
  * 
  * 
@@ -16,7 +16,7 @@ public class Controller extends AbstractController implements ActionListener {
 	private JButton mineen;
 	private JButton pluseen;
 	private JButton start;
-	private JButton stop;
+	private JButton stop;m
 	
 	public Controller(Model model) {
 		super(model);
@@ -47,7 +47,7 @@ public class Controller extends AbstractController implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==mineen) {
-			model.setAantal(model.getAantal()-1);
+			model.setAantal(model.getAantal()-1);bll\
 		}
 		
 		if (e.getSource()==pluseen) {
