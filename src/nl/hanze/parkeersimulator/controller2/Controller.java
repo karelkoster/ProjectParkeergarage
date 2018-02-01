@@ -1,3 +1,4 @@
+package nl.hanze.parkeersimulator.controller2;
 /*
  * Deze klasse is niet ingebruik
  * 

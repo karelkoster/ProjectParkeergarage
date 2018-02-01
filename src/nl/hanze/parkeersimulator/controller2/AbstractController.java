@@ -1,5 +1,5 @@
 
-package nl.hanze.parkeersimulator.controller;
+package nl.hanze.parkeersimulator.controller2;
 
 import nl.hanze.parkeersimulator.model.*;
 import javax.swing.*;

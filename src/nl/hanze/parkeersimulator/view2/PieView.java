@@ -1,4 +1,4 @@
-package nl.hanze.parkeersimulator.view;
+package nl.hanze.parkeersimulator.view2;
 
 import java.awt.*;
 
@@ -13,17 +13,18 @@ public class PieView extends AbstractView {
 	}
 
 	public void paintComponent(Graphics g) {
-		int aantalRed=getModel().getAantalRed();
-		int aantalBlue=getModel().getAantalBluePie();
-		
+		int aantalRed = getModel().getAantalRed();
+		int aantalBlue = getModel().getAantalBluePie();
+
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, 540, 540);
 		g.setColor(Color.BLUE);
 		g.fillArc(10, 10, 180, 180, 0, berekenPie(aantalBlue));
 		g.setColor(Color.RED);
 		g.fillArc(10, 10, 180, 180, 0, berekenPie(aantalRed));
-	}	
-	private int berekenPie(int aantal) { 
-		return (int)(aantal/1.5); 
+	}
+
+	private int berekenPie(int aantal) {
+		return (int) (aantal / 1.5);
 	}
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-//package nl.hanze.parkeersimulator.view;
+//package nl.hanze.parkeersimulator.view2;
 //
 //import javax.swing.JPanel;
 //

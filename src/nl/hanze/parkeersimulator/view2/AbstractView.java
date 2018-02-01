@@ -1,4 +1,4 @@
-package nl.hanze.parkeersimulator.view;
+package nl.hanze.parkeersimulator.view2;
 
 import javax.swing.*;
 
@@ -9,14 +9,14 @@ public abstract class AbstractView extends JPanel {
 	protected Model model;
 
 	public AbstractView(Model model) {
-		this.model=model;
+		this.model = model;
 		model.addView(this);
 	}
-	
+
 	public Model getModel() {
 		return model;
 	}
-	
+
 	public void updateView() {
 		repaint();
 	}

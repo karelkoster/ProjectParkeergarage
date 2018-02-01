@@ -1,4 +1,4 @@
-package nl.hanze.parkeersimulator.view;
+package nl.hanze.parkeersimulator.view2;
 
 import javax.swing.*;
 
@@ -80,8 +80,7 @@ public class SimulatorView extends JFrame {
 		}
 	}
 
-
-private class CarParkView extends JPanel {
+	private class CarParkView extends JPanel {
 
 		/**
 		 * 

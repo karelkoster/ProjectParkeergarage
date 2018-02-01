@@ -10,7 +10,7 @@ public abstract class Car {
 	private int minutesLeft;
 	private boolean isPaying;
 	private boolean hasToPay;
-	private Color color; 
+	private Color color;
 
 	/**
 	 * Constructor for objects of class Car
@@ -54,12 +54,12 @@ public abstract class Car {
 	public void tick() {
 		minutesLeft--;
 	}
-	
-	public void setColor(Color color) { 
-		this.color=color; 
+
+	public void setColor(Color color) {
+		this.color = color;
 	}
 
-	public Color getColor() { 
+	public Color getColor() {
 		return color;
-	} 
+	}
 }
