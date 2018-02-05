@@ -1,8 +1,10 @@
 package nl.hanze.parkeersimulator.view;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.SystemColor;
 
-import nl.hanze.parkeergarage.model.*;
+import nl.hanze.parkeersimulator.model.CarParkModel;
 
 @SuppressWarnings("serial")
 public class PieView extends AbstractView {
@@ -21,9 +23,9 @@ public class PieView extends AbstractView {
 		g.setColor(SystemColor.menu);
 		g.fillRect(0, 0, 200, 200);
 		g.setColor(Color.BLUE);
-		g.fillArc(10, 10, 180, 180, berekenPie(normaal), berekenPie(reservering));
+		g.fillArc(10, 10, 180, 180, normaal, reservering);
 		g.setColor(Color.RED);
-		g.fillArc(10, 10, 180, 180, 0, berekenPie(normaal));
+		g.fillArc(10, 10, 180, 180, 0, normaal);
 	}
 
 	public int getAantalRed() {

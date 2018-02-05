@@ -1,8 +1,9 @@
 package nl.hanze.parkeersimulator.model;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import nl.hanze.parkeersimulator.view2.AbstractView;
+import nl.hanze.parkeersimulator.view.AbstractView;
 
 public abstract class AbstractModel {
 	private List<AbstractView> views;

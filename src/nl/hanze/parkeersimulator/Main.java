@@ -1,54 +1,47 @@
 package nl.hanze.parkeersimulator;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import nl.hanze.parkeersimulator.model.CarParkModel;
-import nl.hanze.parkeersimulator.model.Model;
-import nl.hanze.parkeersimulator.model.SimulatorModel;
-import nl.hanze.parkeersimulator.view2.AbstractView;
-import nl.hanze.parkeersimulator.view2.PieView;
-import nl.hanze.parkeersimulator.view2.SimulatorView;
+import nl.hanze.parkeersimulator.view.AbstractView;
+import nl.hanze.parkeersimulator.view.CarParkView;
+import nl.hanze.parkeersimulator.view.PieView;
 
-public class Main extends JFrame {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Main {
+	private AbstractView carParkView;
+	private AbstractView pieView;
+	private CarParkModel model;
+	private JFrame screen;
 
 	public Main() {
+		screen = new JFrame("City Parking Groningen");
 
-		setTitle("Parkeergaragesimulator");
-		// setSize(640,400);
-		JPanel rootPanel = new JPanel();
+		model = new CarParkModel(3, 6, 30);
 
-		// JLabel header = new JLabel("Parkeerplekken", SwingConstants.CENTER);
-		// rootPanel.add(header);
+		carParkView = new CarParkView(model);
+		carParkView.setBorder(new LineBorder(new Color(0, 0, 0)));
 
-		// Model/Controller/View
-		CarParkModel simulatorModel = new CarParkModel(3, 6, 30);
+		pieView = new PieView(model);
+		pieView.setBorder(new LineBorder(new Color(0, 0, 0)));
+		pieView.setLocation(10, 80);
 
-		SimulatorView simulatorView = new SimulatorView(simulatorModel);
-		SimulatorModel simulatorController = new SimulatorModel(simulatorView);
-
-		Model model = new Model();
-		AbstractView pieview = new PieView(model);
-		// door ries toegevoegd
-		simulatorModel.SetModel(model);
-		simulatorController.SetModel(model);
-		// ---
-		JFrame screen = new JFrame("Model View Controller/Dynamic Model with thread");
-		screen.setSize(450, 285);
+		screen.setSize(1200, 600);
 		screen.setResizable(false);
-		screen.setLayout(null);
-		screen.getContentPane().add(pieview);
-		pieview.setBounds(230, 10, 200, 200);
+		screen.getContentPane().setLayout(null);
+
+		carParkView.setLayout(null);
+
+		screen.getContentPane().add(carParkView);
+		screen.getContentPane().add(pieView);
+
+		carParkView.setBounds(239, 53, 850, 500);
+
 		screen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		add(rootPanel);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		screen.setVisible(true);
-		simulatorController.run();
+		model.run();
 	}
 
 	public static void main(String[] args) {

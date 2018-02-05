@@ -2,6 +2,7 @@ package nl.hanze.parkeersimulator.model.cars;
 
 import java.awt.Color;
 
+
 import nl.hanze.parkeersimulator.model.Location;
 
 public abstract class Car {

@@ -1,9 +1,9 @@
 
 package nl.hanze.parkeersimulator.controller;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
-import nl.hanze.parkeergarage.model.CarParkModel;
+import nl.hanze.parkeersimulator.model.CarParkModel;
 
 @SuppressWarnings("serial")
 public abstract class AbstractController extends JPanel {

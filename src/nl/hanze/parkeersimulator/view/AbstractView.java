@@ -1,7 +1,8 @@
 package nl.hanze.parkeersimulator.view;
 
 import javax.swing.JPanel;
-import nl.hanze.parkeergarage.model.CarParkModel;
+
+import nl.hanze.parkeersimulator.model.CarParkModel;
 
 @SuppressWarnings("serial")
 public abstract class AbstractView extends JPanel {
