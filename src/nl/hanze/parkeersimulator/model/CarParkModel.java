@@ -28,7 +28,11 @@ public class CarParkModel extends AbstractModel {
 	private int normaal;
 	private int reservering;
 
-	private int tickPause = 100;
+	private int tickPause = 1;
+	
+	 private int day = 0;
+	 private int hour = 0;
+	 private int minute = 0;
 
 	int weekDayArrivals = 100; // average number of arriving cars per hour
 	int weekendArrivals = 200; // average number of arriving cars per hour
@@ -58,7 +62,25 @@ public class CarParkModel extends AbstractModel {
 
 		cars = new Car[numberOfFloors][numberOfRows][numberOfPlaces];
 	}
-
+	
+	 
+	
+	        
+	 private void advanceTime() {
+	        minute++;
+	        while (minute > 59) {
+	            minute -= 60;
+	            hour++;
+	        }
+	        while (hour > 23) {
+	            hour -= 24;
+	            day++;
+	        }
+	        while (day > 6) {
+	            day -= 7;
+	        }
+	    }
+	 
 	public int getNumberOfFloors() {
 		return numberOfFloors;
 	}
@@ -102,6 +124,18 @@ public class CarParkModel extends AbstractModel {
 	public Car[][][] getCars() {
 		return cars;
 	}
+	
+	 public int getDay() {
+	        return day;
+	    }
+
+	    public int getHour() {
+	        return hour;
+	    }
+
+	    public int getMinute() {
+	        return minute;
+	    }
 
 	public void setCars(Car[][][] cars) {
 		this.cars = cars;
@@ -162,6 +196,7 @@ public class CarParkModel extends AbstractModel {
 
 	private void tick() {
 		oldtick();
+		advanceTime();
 		handleExit();
 		notifyViews();
 		handleEntrance();
@@ -319,5 +354,6 @@ public class CarParkModel extends AbstractModel {
 			}
 		}
 	}
+
 
 }
