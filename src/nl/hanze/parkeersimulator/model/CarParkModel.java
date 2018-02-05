@@ -1,14 +1,15 @@
 package nl.hanze.parkeersimulator.model;
 
 import java.awt.Color;
-
 import java.util.Random;
 
-import nl.hanze.parkeersimulator.model.cars.AdHocCar;
-import nl.hanze.parkeersimulator.model.cars.Car;
-import nl.hanze.parkeersimulator.model.cars.ParkingPassCar;
+import nl.hanze.parkeersimulator.cars.AdHocCar;
+import nl.hanze.parkeersimulator.cars.Car;
+import nl.hanze.parkeersimulator.cars.ParkingPassCar;
 
-public class CarParkModel extends AbstractModel {
+public class CarParkModel extends AbstractModel implements Runnable {
+	public static boolean run;
+
 	private CarQueue entranceCarQueue;
 	private CarQueue entrancePassQueue;
 	private CarQueue paymentCarQueue;
@@ -21,6 +22,7 @@ public class CarParkModel extends AbstractModel {
 	private int numberOfPlaces;
 	private int numberOfOpenSpots;
 	private Car[][][] cars;
+	
 
 	private static final String AD_HOC = "1";
 	private static final String PASS = "2";
@@ -28,11 +30,11 @@ public class CarParkModel extends AbstractModel {
 	private int normaal;
 	private int reservering;
 
-	private int tickPause = 1;
+	private int tickPause = 100;
 	
-	 private int day = 0;
-	 private int hour = 0;
-	 private int minute = 0;
+	private int day = 0;
+	private int hour = 0;
+	private int minute = 0;
 
 	int weekDayArrivals = 100; // average number of arriving cars per hour
 	int weekendArrivals = 200; // average number of arriving cars per hour
@@ -63,24 +65,7 @@ public class CarParkModel extends AbstractModel {
 		cars = new Car[numberOfFloors][numberOfRows][numberOfPlaces];
 	}
 	
-	 
-	
-	        
-	 private void advanceTime() {
-	        minute++;
-	        while (minute > 59) {
-	            minute -= 60;
-	            hour++;
-	        }
-	        while (hour > 23) {
-	            hour -= 24;
-	            day++;
-	        }
-	        while (day > 6) {
-	            day -= 7;
-	        }
-	    }
-	 
+
 	public int getNumberOfFloors() {
 		return numberOfFloors;
 	}
@@ -88,6 +73,17 @@ public class CarParkModel extends AbstractModel {
 	public void setNumberOfFloors(int numberOfFloors) {
 		this.numberOfFloors = numberOfFloors;
 	}
+	 public int getDay() {
+	        return day;
+	    }
+
+	    public int getHour() {
+	        return hour;
+	    }
+
+	    public int getMinute() {
+	        return minute;
+	    }
 
 	public int getNumberOfRows() {
 		return numberOfRows;
@@ -124,18 +120,6 @@ public class CarParkModel extends AbstractModel {
 	public Car[][][] getCars() {
 		return cars;
 	}
-	
-	 public int getDay() {
-	        return day;
-	    }
-
-	    public int getHour() {
-	        return hour;
-	    }
-
-	    public int getMinute() {
-	        return minute;
-	    }
 
 	public void setCars(Car[][][] cars) {
 		this.cars = cars;
@@ -189,15 +173,21 @@ public class CarParkModel extends AbstractModel {
 	}
 
 	public void run() {
-		for (int i = 0; i < 10000; i++) {
+		for (int i = 0; i < 10000 && run; i++) {
 			tick();
 		}
+		
 	}
-
+	public void start() {
+		if(!run) {
+			run = true;
+			new Thread(this).start();
+		}
+	}
 	private void tick() {
 		oldtick();
-		advanceTime();
 		handleExit();
+		advanceTime();
 		notifyViews();
 		handleEntrance();
 		try {
@@ -206,6 +196,20 @@ public class CarParkModel extends AbstractModel {
 			e.printStackTrace();
 		}
 	}
+	 private void advanceTime() {
+	        minute++;
+	        while (minute > 59) {
+	            minute -= 60;
+	            hour++;
+	        }
+	        while (hour > 23) {
+	            hour -= 24;
+	            day++;
+	        }
+	        while (day > 6) {
+	            day -= 7;
+	        }
+	    }
 
 	private void handleEntrance() {
 		carsArriving();
@@ -355,5 +359,11 @@ public class CarParkModel extends AbstractModel {
 		}
 	}
 
+	public void stop() {
+		run = false;
+	}
+	public void close() {
+                System.exit(0);
+        }
 
 }
