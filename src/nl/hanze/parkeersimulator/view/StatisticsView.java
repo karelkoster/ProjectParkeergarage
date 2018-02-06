@@ -24,7 +24,7 @@ public class StatisticsView extends AbstractView {
 
 		this.setLayout(new GridLayout(6, 2));
 
-		add(new JLabel("Aantal open spots", SwingConstants.RIGHT));
+		add(new JLabel("Aantal open spots:", SwingConstants.RIGHT));
 		openSpots = new JLabel("", SwingConstants.RIGHT);
 		add(openSpots);
 

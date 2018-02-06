@@ -13,6 +13,7 @@ public class ClockView extends AbstractView {
 
     public ClockView(CarParkModel model) {
         super(model);
+        setSize(200, 54);
         clock = new JLabel("hier komt de tijd te staan");
         add(clock);
         updateView();
@@ -45,8 +46,6 @@ public class ClockView extends AbstractView {
     }
 
     public void updateView() {
- 
-
         int day = model.getDay();
         int hour = model.getHour();
         int minute = model.getMinute();

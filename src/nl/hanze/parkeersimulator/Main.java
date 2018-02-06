@@ -35,22 +35,20 @@ public class Main {
 		carParkView.setBorder(new LineBorder(new Color(0, 0, 0)));
 
 		controller = new Controller(carParkModel);
-		controller.setLocation(8, 0);
-		controller.setSize(500, 40);
+		controller.setLocation(280, 553);
+		controller.setSize(850, 40);
 		controller.setBorder(new LineBorder(new Color(0, 0, 0)));
 
 		clockView = new ClockView(carParkModel);
 		clockView.setBorder(new LineBorder(new Color(0, 0, 0)));
 		clockView.setLocation(575, 0);
-		clockView.setSize(200, 54);
 		
 		LegendView = new LegendView(carParkModel);
 		LegendView.setBorder(new LineBorder(new Color(0, 0, 0)));
 		LegendView.setLocation(800, 0);
 
 		pieView = new PieView(carParkModel);
-		pieView.setBorder(new LineBorder(new Color(0, 0, 0)));
-		pieView.setLocation(10, 80);
+		pieView.setLocation(35, 80);
 
 		statisticsView = new StatisticsView(carParkModel);
 		statisticsView.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -61,7 +59,7 @@ public class Main {
 		LegendView.setLocation(800, 0);
 		
 
-		screen.setSize(1200, 600);
+		screen.setSize(1200, 630);
 		screen.setResizable(false);
 		screen.getContentPane().setLayout(null);
 

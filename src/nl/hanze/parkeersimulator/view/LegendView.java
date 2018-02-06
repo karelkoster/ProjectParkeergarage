@@ -16,7 +16,6 @@ public class LegendView extends AbstractView {
 
 	@Override
 	public void paint(Graphics g) {
-
 		g.setColor(Color.black);
 		g.drawString("Ad-Hoc auto's", 40, 22);
 		g.setColor(Color.red);
@@ -26,5 +25,8 @@ public class LegendView extends AbstractView {
 		g.setColor(Color.blue);
 		g.fillRect(10, 30, 24, 16);
 	}
-
+	
+	public void updateView() {
+		
+	}
 }

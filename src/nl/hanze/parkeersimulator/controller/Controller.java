@@ -5,24 +5,24 @@ package nl.hanze.parkeersimulator.controller;
 import nl.hanze.parkeersimulator.model.CarParkModel;
 
 import java.awt.event.*;
-  
+
+@SuppressWarnings("serial")
 public class Controller extends AbstractController implements ActionListener{
 
-	private JButton start = new JButton("start");
-	private JButton stop = new JButton("stop");
-	private JButton sluiten = new JButton("sluiten");
-	private JButton honderdstappen = new JButton("1 uur vooruit");
-	private JButton eenstap = new JButton("1 minuut vooruit");
+	private JButton start = new JButton("Start");
+	private JButton stop = new JButton("Stop");
+	private JButton sluiten = new JButton("Sluiten");
+	private JButton honderdstappen = new JButton("1 Uur vooruit");
+	private JButton eenstap = new JButton("1 Minuut vooruit");
 	
 	public Controller(CarParkModel model) {
 		super(model);
 		
 		add(start);
 		add(stop);
-		add(sluiten);
 		add(eenstap);
 		add(honderdstappen);
-
+		add(sluiten);
 		
 		start.addActionListener(this);
 		stop.addActionListener(this);
@@ -32,12 +32,16 @@ public class Controller extends AbstractController implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) { 
 		if(e.getSource() == start){
 			model.start();
+			start.setEnabled(false);
+			stop.setEnabled(true);
 		}
 		if(e.getSource() == stop) {
 			model.stop();
+			start.setEnabled(true);
+			stop.setEnabled(false);
 		}
 		if(e.getSource() == sluiten) {
 			model.close();
