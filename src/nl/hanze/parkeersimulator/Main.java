@@ -1,6 +1,7 @@
-package nl.hanze.parkeersimulator2;
+package nl.hanze.parkeersimulator;
 
 import javax.swing.JFrame;
+
 import javax.swing.border.LineBorder;
 
 import java.awt.Color;
@@ -11,36 +12,42 @@ import nl.hanze.parkeersimulator.view.AbstractView;
 import nl.hanze.parkeersimulator.view.CarParkView;
 import nl.hanze.parkeersimulator.view.ClockView;
 import nl.hanze.parkeersimulator.view.PieView;
-	
+import nl.hanze.parkeersimulator.view.StatisticsView;
+
 public class Main {
 	private AbstractView carParkView;
 	private AbstractView pieView;
 	private AbstractView clockView;
-	private CarParkModel model;
+	private AbstractView statisticsView;
+	private CarParkModel carParkModel;
 	private JFrame screen;
 	private Controller controller;
 
 	public Main() {
 		screen = new JFrame("City Parking Groningen");
 
-		model = new CarParkModel(3, 6, 30);
-		
-		carParkView = new CarParkView(model);
+		carParkModel = new CarParkModel(3, 6, 30);
+
+		carParkView = new CarParkView(carParkModel);
 		carParkView.setBorder(new LineBorder(new Color(0, 0, 0)));
-		
-		controller = new Controller(model);
+
+		controller = new Controller(carParkModel);
 		controller.setLocation(8, 0);
-		controller.setSize(350,40);
+		controller.setSize(350, 40);
 		controller.setBorder(new LineBorder(new Color(0, 0, 0)));
-		
-		clockView = new ClockView(model); 
+
+		clockView = new ClockView(carParkModel);
 		clockView.setBorder(new LineBorder(new Color(0, 0, 0)));
 		clockView.setLocation(575, 0);
-		clockView.setSize(200,54);
-	
-		pieView = new PieView(model);
+		clockView.setSize(200, 54);
+
+		pieView = new PieView(carParkModel);
 		pieView.setBorder(new LineBorder(new Color(0, 0, 0)));
 		pieView.setLocation(10, 80);
+
+		statisticsView = new StatisticsView(carParkModel);
+		statisticsView.setBorder(new LineBorder(new Color(0, 0, 0)));
+		statisticsView.setLocation(10, 300);
 
 		screen.setSize(1200, 600);
 		screen.setResizable(false);
@@ -52,13 +59,13 @@ public class Main {
 		screen.getContentPane().add(pieView);
 		screen.getContentPane().add(controller);
 		screen.getContentPane().add(clockView);
-	
+		screen.getContentPane().add(statisticsView);
 
-		carParkView.setBounds(239, 53, 850, 500);
+		carParkView.setBounds(280, 53, 850, 500);
 
 		screen.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		screen.setVisible(true);
-		
+
 	}
 
 	public static void main(String[] args) {
@@ -66,4 +73,3 @@ public class Main {
 	}
 
 }
-

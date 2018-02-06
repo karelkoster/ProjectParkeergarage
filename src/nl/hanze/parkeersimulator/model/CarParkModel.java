@@ -3,9 +3,9 @@ package nl.hanze.parkeersimulator.model;
 import java.awt.Color;
 import java.util.Random;
 
-import nl.hanze.parkeersimulator.cars.AdHocCar;
-import nl.hanze.parkeersimulator.cars.Car;
-import nl.hanze.parkeersimulator.cars.ParkingPassCar;
+import nl.hanze.parkeersimulator.model.cars.AdHocCar;
+import nl.hanze.parkeersimulator.model.cars.Car;
+import nl.hanze.parkeersimulator.model.cars.ParkingPassCar;
 
 public class CarParkModel extends AbstractModel implements Runnable {
 	public static boolean run;
@@ -22,7 +22,6 @@ public class CarParkModel extends AbstractModel implements Runnable {
 	private int numberOfPlaces;
 	private int numberOfOpenSpots;
 	private Car[][][] cars;
-	
 
 	private static final String AD_HOC = "1";
 	private static final String PASS = "2";
@@ -31,7 +30,7 @@ public class CarParkModel extends AbstractModel implements Runnable {
 	private int reservering;
 
 	private int tickPause = 100;
-	
+
 	private int day = 0;
 	private int hour = 0;
 	private int minute = 0;
@@ -44,6 +43,8 @@ public class CarParkModel extends AbstractModel implements Runnable {
 	int enterSpeed = 3; // number of cars that can enter per minute
 	int paymentSpeed = 7; // number of cars that can pay per minute
 	int exitSpeed = 5; // number of cars that can leave per minute
+
+	private int carsVisited = 0;
 
 	/**
 	 * @param numberOfFloors
@@ -64,7 +65,6 @@ public class CarParkModel extends AbstractModel implements Runnable {
 
 		cars = new Car[numberOfFloors][numberOfRows][numberOfPlaces];
 	}
-	
 
 	public int getNumberOfFloors() {
 		return numberOfFloors;
@@ -73,17 +73,18 @@ public class CarParkModel extends AbstractModel implements Runnable {
 	public void setNumberOfFloors(int numberOfFloors) {
 		this.numberOfFloors = numberOfFloors;
 	}
-	 public int getDay() {
-	        return day;
-	    }
 
-	    public int getHour() {
-	        return hour;
-	    }
+	public int getDay() {
+		return day;
+	}
 
-	    public int getMinute() {
-	        return minute;
-	    }
+	public int getHour() {
+		return hour;
+	}
+
+	public int getMinute() {
+		return minute;
+	}
 
 	public int getNumberOfRows() {
 		return numberOfRows;
@@ -101,6 +102,11 @@ public class CarParkModel extends AbstractModel implements Runnable {
 		this.numberOfPlaces = numberOfPlaces;
 	}
 
+	public int getTotalNumberOfSpots() {
+		int total = getNumberOfFloors() * getNumberOfRows() * getNumberOfPlaces();
+		return total;
+	}
+
 	public int getNumberOfOpenSpots() {
 		return numberOfOpenSpots;
 	}
@@ -115,6 +121,26 @@ public class CarParkModel extends AbstractModel implements Runnable {
 
 	public int getReservering() {
 		return reservering;
+	}
+
+	public int getTotalCars() {
+		int total = getNormaal() + getReservering();
+		return total;
+	}
+
+	/**
+	 * @return the carsVisited
+	 */
+	public int getCarsVisited() {
+		return carsVisited;
+	}
+
+	/**
+	 * @param carsVisited
+	 *            the carsVisited to set
+	 */
+	public void setCarsVisited(int carsVisited) {
+		this.carsVisited = carsVisited;
 	}
 
 	public Car[][][] getCars() {
@@ -176,14 +202,16 @@ public class CarParkModel extends AbstractModel implements Runnable {
 		for (int i = 0; i < 10000 && run; i++) {
 			tick();
 		}
-		
+
 	}
+
 	public void start() {
-		if(!run) {
+		if (!run) {
 			run = true;
 			new Thread(this).start();
 		}
 	}
+
 	private void tick() {
 		oldtick();
 		handleExit();
@@ -196,20 +224,21 @@ public class CarParkModel extends AbstractModel implements Runnable {
 			e.printStackTrace();
 		}
 	}
-	 private void advanceTime() {
-	        minute++;
-	        while (minute > 59) {
-	            minute -= 60;
-	            hour++;
-	        }
-	        while (hour > 23) {
-	            hour -= 24;
-	            day++;
-	        }
-	        while (day > 6) {
-	            day -= 7;
-	        }
-	    }
+
+	private void advanceTime() {
+		minute++;
+		while (minute > 59) {
+			minute -= 60;
+			hour++;
+		}
+		while (hour > 23) {
+			hour -= 24;
+			day++;
+		}
+		while (day > 6) {
+			day -= 7;
+		}
+	}
 
 	private void handleEntrance() {
 		carsArriving();
@@ -271,6 +300,7 @@ public class CarParkModel extends AbstractModel implements Runnable {
 		int i = 0;
 		while (exitCarQueue.carsInQueue() > 0 && i < exitSpeed) {
 			exitCarQueue.removeCar();
+			setCarsVisited(getCarsVisited() + 1);
 			i++;
 		}
 	}
@@ -362,8 +392,9 @@ public class CarParkModel extends AbstractModel implements Runnable {
 	public void stop() {
 		run = false;
 	}
+
 	public void close() {
-                System.exit(0);
-        }
+		System.exit(0);
+	}
 
 }
