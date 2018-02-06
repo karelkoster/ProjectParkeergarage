@@ -73,6 +73,20 @@ public class CarParkModel extends AbstractModel implements Runnable {
 	public void setNumberOfFloors(int numberOfFloors) {
 		this.numberOfFloors = numberOfFloors;
 	}
+	public void stap(int getal) {
+        for(int i=getal; i>0; i--) {
+        	oldtick();
+    		handleExit();
+    		advanceTime();
+    		notifyViews();
+    		handleEntrance();
+    		try {
+    			Thread.sleep(5);
+    		} catch (InterruptedException e) {
+    			e.printStackTrace();
+    			}
+       		}
+	}
 
 	public int getDay() {
 		return day;
