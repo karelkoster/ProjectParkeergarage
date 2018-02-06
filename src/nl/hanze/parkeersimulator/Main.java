@@ -36,7 +36,7 @@ public class Main {
 
 		controller = new Controller(carParkModel);
 		controller.setLocation(8, 0);
-		controller.setSize(350, 40);
+		controller.setSize(500, 40);
 		controller.setBorder(new LineBorder(new Color(0, 0, 0)));
 
 		clockView = new ClockView(carParkModel);
