@@ -11,7 +11,8 @@ public class Controller extends AbstractController implements ActionListener{
 	private JButton start = new JButton("start");
 	private JButton stop = new JButton("stop");
 	private JButton sluiten = new JButton("sluiten");
-	
+	private JButton honderdstappen = new JButton("1 uur vooruit");
+	private JButton eenstap = new JButton("1 minuut vooruit");
 	
 	public Controller(CarParkModel model) {
 		super(model);
@@ -19,10 +20,14 @@ public class Controller extends AbstractController implements ActionListener{
 		add(start);
 		add(stop);
 		add(sluiten);
+		add(eenstap);
+		add(honderdstappen);
 
 		
 		start.addActionListener(this);
 		stop.addActionListener(this);
+		eenstap.addActionListener(this);
+		honderdstappen.addActionListener(this);
 		sluiten.addActionListener(this);
 	}
 
@@ -36,6 +41,12 @@ public class Controller extends AbstractController implements ActionListener{
 		}
 		if(e.getSource() == sluiten) {
 			model.close();
+		}
+			if(e.getSource() == eenstap) {
+			model.stap(1);
+		}
+		if(e.getSource() == honderdstappen) {
+			model.stap(60);
 		}
 	
 	}
