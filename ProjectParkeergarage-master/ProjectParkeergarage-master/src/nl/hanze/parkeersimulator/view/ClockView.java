@@ -5,12 +5,24 @@ import nl.hanze.parkeersimulator.model.*;
 
 import javax.swing.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ClockView.
+ */
 public class ClockView extends AbstractView {
 
    
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 2399529792226996637L;
+	
+	/** The clock. */
 	private JLabel clock;
 
+    /**
+     * Instantiates a new clock view.
+     *
+     * @param model the model
+     */
     public ClockView(CarParkModel model) {
         super(model);
         setSize(200, 54);
@@ -20,6 +32,13 @@ public class ClockView extends AbstractView {
        
     }
 
+    /**
+     * Sets the clock.
+     *
+     * @param day the day
+     * @param hour the hour
+     * @param minute the minute
+     */
     private void setClock(int day, int hour, int minute) {
         String dayString;
         switch(day) {
@@ -45,6 +64,9 @@ public class ClockView extends AbstractView {
         clock.setText("<html><h2>"+dayString + " " + hourString + ":" + minuteString+"</h2></html>");
     }
 
+    /* (non-Javadoc)
+     * @see nl.hanze.parkeersimulator.view.AbstractView#updateView()
+     */
     public void updateView() {
         int day = model.getDay();
         int hour = model.getHour();

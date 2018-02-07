@@ -1,13 +1,26 @@
 package nl.hanze.parkeersimulator.model;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Location.
+ */
 public class Location {
 
+	/** The floor. */
 	private int floor;
+	
+	/** The row. */
 	private int row;
+	
+	/** The place. */
 	private int place;
 
 	/**
-	 * Constructor for objects of class Location
+	 * Constructor for objects of class Location.
+	 *
+	 * @param floor the floor
+	 * @param row the row
+	 * @param place the place
 	 */
 	public Location(int floor, int row, int place) {
 		this.floor = floor;
@@ -17,6 +30,9 @@ public class Location {
 
 	/**
 	 * Implement content equality.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
 	 */
 	public boolean equals(Object obj) {
 		if (obj instanceof Location) {
@@ -48,6 +64,8 @@ public class Location {
 	}
 
 	/**
+	 * Gets the floor.
+	 *
 	 * @return The floor.
 	 */
 	public int getFloor() {
@@ -55,6 +73,8 @@ public class Location {
 	}
 
 	/**
+	 * Gets the row.
+	 *
 	 * @return The row.
 	 */
 	public int getRow() {
@@ -62,6 +82,8 @@ public class Location {
 	}
 
 	/**
+	 * Gets the place.
+	 *
 	 * @return The place.
 	 */
 	public int getPlace() {

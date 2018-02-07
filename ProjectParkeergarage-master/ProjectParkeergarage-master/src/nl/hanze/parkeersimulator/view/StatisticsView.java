@@ -7,17 +7,38 @@ import javax.swing.SwingConstants;
 
 import nl.hanze.parkeersimulator.model.CarParkModel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class StatisticsView.
+ */
 public class StatisticsView extends AbstractView {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -2997552213169062263L;
 
+	/** The open spots. */
 	private JLabel openSpots;
+	
+	/** The normaal. */
 	private JLabel normaal;
+	
+	/** The reservering. */
 	private JLabel reservering;
+	
+	/** The total cars. */
 	private JLabel totalCars;
+	
+	/** The snelheid. */
 	private JLabel snelheid;
+	
+	/** The cars visited. */
 	private JLabel carsVisited;
 
+	/**
+	 * Instantiates a new statistics view.
+	 *
+	 * @param carParkModel the car park model
+	 */
 	public StatisticsView(CarParkModel carParkModel) {
 		super(carParkModel);
 		setSize(250, 250);
@@ -50,6 +71,9 @@ public class StatisticsView extends AbstractView {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see nl.hanze.parkeersimulator.view.AbstractView#updateView()
+	 */
 	@Override
 	public void updateView() {
 		openSpots.setText(Integer.toString(getModel().getNumberOfOpenSpots()) + "  ");

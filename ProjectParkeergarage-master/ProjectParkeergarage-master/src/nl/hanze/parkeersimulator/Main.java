@@ -16,16 +16,39 @@ import nl.hanze.parkeersimulator.view.PieView;
 import nl.hanze.parkeersimulator.view.StatisticsView;
 import nl.hanze.parkeersimulator.view.LegendView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Main.
+ */
 public class Main {
+	
+	/** The car park view. */
 	private AbstractView carParkView;
+	
+	/** The pie view. */
 	private AbstractView pieView;
+	
+	/** The clock view. */
 	private AbstractView clockView;
+	
+	/** The statistics view. */
 	private AbstractView statisticsView;
+	
+	/** The Legend view. */
 	private AbstractView LegendView;
+	
+	/** The car park model. */
 	private CarParkModel carParkModel;
+	
+	/** The screen. */
 	private JFrame screen;
+	
+	/** The controller. */
 	private Controller controller;
 
+	/**
+	 * Instantiates a new main.
+	 */
 	public Main() {
 		screen = new JFrame("City Parking Groningen");
 
@@ -77,6 +100,11 @@ public class Main {
 
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		new Main();
 	}

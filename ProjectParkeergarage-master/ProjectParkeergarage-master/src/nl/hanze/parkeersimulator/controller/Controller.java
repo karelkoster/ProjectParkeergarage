@@ -7,18 +7,42 @@ import nl.hanze.parkeersimulator.model.CarParkModel;
 import java.awt.Color;
 import java.awt.event.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Controller.
+ */
 @SuppressWarnings("serial")
 public class Controller extends AbstractController implements ActionListener{
 
+	/** The start. */
 	private JButton start = new JButton("Start");
+	
+	/** The stop. */
 	private JButton stop = new JButton("Stop");
+	
+	/** The sluiten. */
 	private JButton sluiten = new JButton("Sluiten");
+	
+	/** The honderdstappen. */
 	private JButton honderdstappen = new JButton("1 Uur vooruit");
+	
+	/** The eenstap. */
 	private JButton eenstap = new JButton("1 Minuut vooruit");
+	
+	/** The keer twee. */
 	private JButton keerTwee = new JButton("X2");
+	
+	/** The reset. */
 	private JButton reset = new JButton("Reset snelheid");
+	
+	/** The frame. */
 	final JFrame frame = new JFrame(); 
 	
+	/**
+	 * Instantiates a new controller.
+	 *
+	 * @param model the model
+	 */
 	public Controller(CarParkModel model) {
 		super(model);
 		
@@ -45,6 +69,9 @@ public class Controller extends AbstractController implements ActionListener{
 		reset.setEnabled(false);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) { 
 		if(e.getSource() == start){

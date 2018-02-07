@@ -11,17 +11,23 @@ import nl.hanze.parkeersimulator.model.Location;
 import nl.hanze.parkeersimulator.model.CarParkModel;
 import nl.hanze.parkeersimulator.model.cars.Car;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CarParkView.
+ */
 @SuppressWarnings("serial")
 public class CarParkView extends AbstractView {
 
-	/**
-	 * 
-	 */
+	/** The size. */
 	private Dimension size;
+	
+	/** The car park image. */
 	private Image carParkImage;
 
 	/**
-	 * Constructor for objects of class CarPark
+	 * Constructor for objects of class CarPark.
+	 *
+	 * @param model the model
 	 */
 	public CarParkView(CarParkModel model) {
 		super(model);
@@ -30,6 +36,8 @@ public class CarParkView extends AbstractView {
 
 	/**
 	 * Overridden. Tell the GUI manager how big we would like to be.
+	 *
+	 * @return the preferred size
 	 */
 	public Dimension getPreferredSize() {
 		return new Dimension(800, 500);
@@ -38,6 +46,8 @@ public class CarParkView extends AbstractView {
 	/**
 	 * Overridden. The car park view component needs to be redisplayed. Copy the
 	 * internal image to screen.
+	 *
+	 * @param g the g
 	 */
 	public void paintComponent(Graphics g) {
 
@@ -54,6 +64,9 @@ public class CarParkView extends AbstractView {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see nl.hanze.parkeersimulator.view.AbstractView#updateView()
+	 */
 	public void updateView() {
 		// Create a new car park image if the size has changed.
 		if (!size.equals(getSize())) {
@@ -76,6 +89,10 @@ public class CarParkView extends AbstractView {
 
 	/**
 	 * Paint a place on this car park view in a given color.
+	 *
+	 * @param graphics the graphics
+	 * @param location the location
+	 * @param color the color
 	 */
 	private void drawPlace(Graphics graphics, Location location, Color color) {
 		graphics.setColor(color);
